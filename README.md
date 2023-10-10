@@ -1,4 +1,4 @@
-# jackson-invert
+# Jackson Invert
 
 A Jackson module to invert a JSON object of arrays into a Java array/collection
 of objects.
