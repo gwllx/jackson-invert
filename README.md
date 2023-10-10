@@ -1,7 +1,6 @@
 # Jackson Invert
 
-A Jackson module to invert a JSON object of arrays into a Java array/collection
-of objects.
+A Jackson module to invert JSON object-of-arrays into Java array-of-objects.
 
 ## Example
 
