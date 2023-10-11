@@ -58,23 +58,23 @@ public class InvertDeserializer extends JsonDeserializer<Object>
                     "@JsonInvert property must be an object");
         }
 
-        var bufferedParser = rewriteInput(parser, context);
+        var bufferedParser = bufferAndRewriteInput(parser, context);
         return context.readValue(bufferedParser, type);
     }
 
-    private JsonParser rewriteInput(JsonParser parser, DeserializationContext context)
+    private JsonParser bufferAndRewriteInput(JsonParser parser, DeserializationContext context)
             throws IOException {
-        var fields = getArrayFieldValues(parser, context);
+        var fields = bufferArrayValues(parser, context);
         var output = new TokenBuffer(parser.getCodec(), false);
 
         output.writeStartArray();
-        writeObjects(output, fields);
+        writeArraysAsObjects(output, fields);
         output.writeEndArray();
 
         return output.asParserOnFirstToken();
     }
 
-    private void writeObjects(TokenBuffer output, List<ArrayValueBuffer> fields)
+    private void writeArraysAsObjects(TokenBuffer output, List<ArrayValueBuffer> fields)
             throws IOException {
         while (anyHasValue(fields)) {
             output.writeStartObject();
@@ -100,7 +100,7 @@ public class InvertDeserializer extends JsonDeserializer<Object>
         return false;
     }
 
-    private List<ArrayValueBuffer> getArrayFieldValues(JsonParser parser,
+    private List<ArrayValueBuffer> bufferArrayValues(JsonParser parser,
             DeserializationContext context) throws IOException {
         var buffers = new ArrayList<ArrayValueBuffer>();
 
