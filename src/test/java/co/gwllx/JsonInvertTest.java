@@ -22,6 +22,7 @@ public class JsonInvertTest {
 
     private static record ArrayWrapper(@JsonInvert Person[] people) {}
     private static record ListWrapper(@JsonInvert List<Person> people) {}
+    private static record InvalidWrapper(@JsonInvert Person person) {}
     private static record Person(String name, int age) {}
 
     @Test
@@ -72,7 +73,7 @@ public class JsonInvertTest {
     @Test
     public void nonObjectJsonInvertProperty() {
         var input = """
-        { "people": [] }
+          { "people": [] }
         """;
 
         var ex = assertThrowsExactly(JsonMappingException.class,
@@ -93,5 +94,16 @@ public class JsonInvertTest {
         var ex = assertThrowsExactly(JsonMappingException.class,
                 () -> MAPPER.readValue(input, ListWrapper.class));
         assertTrue(ex.getMessage().startsWith("Field of a @JsonInvert property must be an array"));
+    }
+
+    @Test
+    public void invalidWrapper() {
+        var input = """
+          { "person": {} }
+        """;
+
+        var ex = assertThrowsExactly(JsonMappingException.class,
+                () -> MAPPER.readValue(input, InvalidWrapper.class));
+        assertTrue(ex.getMessage().startsWith("@JsonInvert requires a container type"));
     }
 }
