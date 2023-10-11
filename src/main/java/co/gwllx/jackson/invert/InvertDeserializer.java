@@ -54,7 +54,8 @@ public class InvertDeserializer extends JsonDeserializer<Object>
     public Object deserialize(JsonParser parser, DeserializationContext context)
             throws IOException, JacksonException {
         if (!parser.isExpectedStartObjectToken()) {
-            throw new JsonMappingException(parser, "Expected start of object");
+            throw new JsonMappingException(parser,
+                    "@JsonInvert property must be an object");
         }
 
         var bufferedParser = rewriteInput(parser, context);
@@ -110,7 +111,8 @@ public class InvertDeserializer extends JsonDeserializer<Object>
 
             var fieldBuffer = context.bufferAsCopyOfValue(parser);
             if (!JsonToken.START_ARRAY.equals(fieldBuffer.firstToken())) {
-                throw new JsonMappingException(parser, "Expected start of array");
+                throw new JsonMappingException(parser,
+                        "Field of a @JsonInvert property must be an array");
             }
 
             var fieldParser = fieldBuffer.asParserOnFirstToken();
