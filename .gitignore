@@ -1,2 +1,6 @@
+# IDEs
 .vscode/
+
+# Maven
 target/
+release.properties
