@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>co.gwllx.jackson</groupId>
     <artifactId>jackson-invert</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <name>jackson-invert</name>
     <description>A Jackson module to invert JSON object-of-arrays into Java array-of-objects.</description>
@@ -39,7 +36,7 @@
         <connection>scm:git:git@github.com:gwllx/jackson-invert.git</connection>
         <developerConnection>scm:git:git@github.com:gwllx/jackson-invert.git</developerConnection>
         <url>https://github.com/gwllx/jackson-invert</url>
-        <tag>HEAD</tag>
+        <tag>v0.0.1</tag>
     </scm>
 
     <distributionManagement>
