@@ -4,7 +4,7 @@
 
     <groupId>co.gwllx.jackson</groupId>
     <artifactId>jackson-invert</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <name>jackson-invert</name>
     <description>A Jackson module to invert JSON object-of-arrays into Java array-of-objects.</description>
@@ -36,7 +36,7 @@
         <connection>scm:git:git@github.com:gwllx/jackson-invert.git</connection>
         <developerConnection>scm:git:git@github.com:gwllx/jackson-invert.git</developerConnection>
         <url>https://github.com/gwllx/jackson-invert</url>
-        <tag>v0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
